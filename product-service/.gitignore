@@ -2,8 +2,9 @@
 node_modules
 jspm_packages
 
-# Serverless directories
 .serverless
-swagger
-# Webpack directories
 .webpack
+package-lock.json
+.esbuild
+swagger
+.env
