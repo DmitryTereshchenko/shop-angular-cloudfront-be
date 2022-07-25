@@ -1,0 +1,10 @@
+# package directories
+node_modules
+jspm_packages
+
+.serverless
+.webpack
+package-lock.json
+.esbuild
+swagger
+.env
