@@ -16,6 +16,11 @@ const serverlessConfiguration: AWS = {
       minimumCompressionSize: 1024,
       shouldStartNameWithService: true,
     },
+    environment: {
+      SQS_URL: {
+        Ref: 'SQSQueue'
+      },
+    },
     iamRoleStatements: [
       {
         Effect: 'Allow',
@@ -26,12 +31,31 @@ const serverlessConfiguration: AWS = {
         Effect: 'Allow',
         Action: ['s3:*'],
         Resource: ['arn:aws:s3:::angular-shop-bucket-uploaded/*']
-      }
+      },
+      {
+        Effect: 'Allow',
+        Action: ['sqs:*'],
+        Resource: [
+          {
+            'Fn::GetAtt': ['SQSQueue', 'Arn']
+          }
+        ]
+      },
     ]
   },
   // import the function via paths
   functions: { importProducts, importFileParser },
   package: { individually: true },
+  resources: {
+    Resources: {
+      SQSQueue: {
+        Type: 'AWS::SQS::Queue',
+        Properties: {
+          QueueName: 'catalogItemsQueue'
+        }
+      },
+    }
+  },
   custom: {
     esbuild: {
       bundle: true,

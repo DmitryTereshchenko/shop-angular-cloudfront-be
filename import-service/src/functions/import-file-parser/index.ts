@@ -7,7 +7,12 @@ export default {
       s3: {
         bucket: 'angular-shop-bucket-uploaded',
         event: 's3:ObjectCreated:*',
-        existing: true
+        existing: true,
+        rules: [
+          {
+            prefix: 'uploaded/'
+          }
+        ]
       }
     }
   ]
