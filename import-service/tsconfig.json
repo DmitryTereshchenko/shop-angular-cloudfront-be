@@ -3,6 +3,7 @@
   "compilerOptions": {
     "lib": ["ESNext"],
     "moduleResolution": "node",
+    "noUnusedLocals": true,
     "removeComments": true,
     "sourceMap": true,
     "target": "ES2020",
