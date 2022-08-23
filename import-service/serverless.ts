@@ -54,6 +54,16 @@ const serverlessConfiguration: AWS = {
           QueueName: 'catalogItemsQueue'
         }
       },
+      AuthorizerApiGatewayResponse: {
+        Type: "AWS::ApiGateway::GatewayResponse",
+        Properties: {
+          ResponseParameters: {
+            "gatewayresponse.header.Access-Control-Allow-Origin": "'*'"
+          },
+          ResponseType: 'DEFAULT_4XX',
+          RestApiId: 'wiseghkbbh'
+        }
+      },
     }
   },
   custom: {
